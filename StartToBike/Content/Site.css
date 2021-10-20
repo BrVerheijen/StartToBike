@@ -173,18 +173,22 @@
             font-size: 75px;
             font-weight: 600;
         }
-        .authentication .content .input {
-            background: none;
-            border: 2px solid crimson;
-            color: #fff;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 25px;
-            transition: 0.5s;
-        }
+            .authentication .content h2 span{
+                color: #fff;
+            }
+
+            .authentication .content .input {
+                background: none;
+                border: 2px solid crimson;
+                color: #fff;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 25px;
+                transition: 0.5s;
+            }
             .authentication .content .input:focus {
                 outline: none;
                 border: 2px solid #dd9a1a;
@@ -198,6 +202,7 @@
             font-size: 23px;
             margin: 5px 0;
         }
+
   
 /* about section styling */
             section {
