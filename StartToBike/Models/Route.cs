@@ -15,7 +15,7 @@ namespace StartToBike.Models
         public string Length { get; set; }
         public int Difficulty { get; set; }
 
-        public ICollection<ApplicationUser> UserList { get; set;}
+        public virtual ICollection<ApplicationUser> UserList { get; set;}
 
     }
 }

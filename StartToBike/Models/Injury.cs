@@ -16,6 +16,6 @@ namespace StartToBike.Models
         public string Picture { get; set; }
         public string Prevention { get; set; }
         public string Treatement { get; set; }
-        public ICollection<ApplicationUser> UserList { get; set; }
+        public virtual ICollection<ApplicationUser> UserList { get; set; }
     }
 }

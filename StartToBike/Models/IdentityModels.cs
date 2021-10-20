@@ -11,11 +11,11 @@ namespace StartToBike.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public ICollection<Injury> InjuryList { get; set; }
+        public virtual ICollection<Injury> InjuryList { get; set; }
 
-        public ICollection<Route> RouteList { get; set; }
+        public virtual ICollection<Route> RouteList { get; set; }
 
-        public ICollection<Training> TrainingList { get; set; }
+        public virtual ICollection<Training> TrainingList { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -30,7 +30,7 @@ namespace StartToBike.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("StartToBike", throwIfV1Schema: false)
         {
         }
 
