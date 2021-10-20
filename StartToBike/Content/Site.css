@@ -170,6 +170,8 @@
             }
         .authentication .content h2 {
             color: crimson;
+            font-size: 75px;
+            font-weight: 600;
         }
         .authentication .content .input {
             background: none;
@@ -196,7 +198,8 @@
             font-size: 23px;
             margin: 5px 0;
         }
-            /* about section styling */
+  
+/* about section styling */
             section {
                 padding: 100px 0;
             }
@@ -398,6 +401,18 @@
     .home .home-content a {
         font-size: 20px;
     }
+    .authentication .content h2 {
+        font-size: 60px;
+    }
+    .authentication .content h4{
+        font-size: 32px;
+    }
+    .authentication .content .input-label{
+        font-size: 22px;
+    }
+    .authentication .content .alert {
+        font-size: 19px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -407,5 +422,12 @@
 
     .home .home-content .text-3 {
         font-size: 27px;
+    }
+    .authentication .content h2 {
+        font-size: 50px;
+    }
+
+    .authentication .content h4 {
+        font-size: 25px;
     }
 }
