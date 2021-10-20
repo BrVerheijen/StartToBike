@@ -26,5 +26,11 @@ namespace StartToBike.Controllers
 
             return View();
         }
+        public ActionResult Home()
+        {
+            ViewBag.Message = "Your home page.";
+
+            return View();
+        }
     }
 }
