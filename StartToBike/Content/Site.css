@@ -173,7 +173,7 @@
             font-weight: 600;
         }
             .authentication .content h2 span{
-                color: #fff;
+                color: crimson;
             }
 
             .authentication .content .input {
@@ -201,6 +201,25 @@
             font-size: 23px;
             margin: 5px 0;
         }
+
+.card {
+    display: inline-block;
+    grid-row-start: 10;
+    border-radius: 3%;
+    background-color: none;
+    border: solid crimson 2px;
+    width: 24rem;
+    height: 24rem;
+    margin: 50px 90px;
+    color: white;
+    font-size: 33px;
+    transition: transform .3s;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+}
+
 
   
 /* about section styling */
