@@ -135,9 +135,8 @@
     display: flex;
     background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("img/bg_image.jpg") no-repeat center;
     background-size: cover;
-    height: 100vh;
+    height:100vh;
     color: #fff;
-    min-height: 500px;
     font-family: 'Ubuntu', sans-serif;
 }
     .authentication .content {
@@ -303,6 +302,11 @@
 
 
 /* responsive media query start */
+@media (max-height: 840px){
+    .authentication{
+        height:100%;
+    }
+}
 @media (max-width: 1300px) {
     .home .max-width {
         margin-left: 0px;
