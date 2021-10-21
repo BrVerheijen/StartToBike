@@ -168,7 +168,7 @@
                 background: none;
             }
         .authentication .content h2 {
-            color: crimson;
+            color: #fff;
             font-size: 75px;
             font-weight: 600;
         }
@@ -306,6 +306,7 @@
     .authentication{
         height:100%;
     }
+    
 }
 @media (max-width: 1300px) {
     .home .max-width {
