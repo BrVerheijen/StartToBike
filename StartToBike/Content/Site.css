@@ -303,6 +303,18 @@
         border: solid crimson 2px;
     }
 
+table tr{
+    display: table-cell;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+}
+tr td {
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
   
 /* about section styling */
             section {
@@ -403,7 +415,7 @@
 
 
 /* responsive media query start */
-@media (max-height: 840px){
+@media (max-height: 864px){
     .authentication{
         height:100%;
     }
