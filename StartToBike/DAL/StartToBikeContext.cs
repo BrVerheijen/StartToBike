@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using StartToBike.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace StartToBike.DAL
 {
@@ -19,7 +20,13 @@ namespace StartToBike.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+
+
         }
     }
 }

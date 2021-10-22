@@ -9,7 +9,8 @@ namespace StartToBike.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(StartToBike.DAL.StartToBikeContext context)
