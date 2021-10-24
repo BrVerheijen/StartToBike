@@ -11,6 +11,7 @@ using StartToBike.Models;
 
 namespace StartToBike.Controllers
 {
+    [Authorize]
     public class InjuriesController : Controller
     {
         private StartToBikeContext db = new StartToBikeContext();
@@ -37,6 +38,7 @@ namespace StartToBike.Controllers
         }
 
         // GET: Injuries/Create
+        [Authorize(Roles = "Moderator")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +49,7 @@ namespace StartToBike.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult Create([Bind(Include = "ID,Name,Description,Picture,Prevention,Treatement")] Injury injury)
         {
             if (ModelState.IsValid)
@@ -60,6 +63,7 @@ namespace StartToBike.Controllers
         }
 
         // GET: Injuries/Edit/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +83,7 @@ namespace StartToBike.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult Edit([Bind(Include = "ID,Name,Description,Picture,Prevention,Treatement")] Injury injury)
         {
             if (ModelState.IsValid)
@@ -91,6 +96,7 @@ namespace StartToBike.Controllers
         }
 
         // GET: Injuries/Delete/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +114,7 @@ namespace StartToBike.Controllers
         // POST: Injuries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Injury injury = db.Injuries.Find(id);
