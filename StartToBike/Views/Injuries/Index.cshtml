@@ -8,22 +8,23 @@
         <div class="content">
             <h2>Blessures</h2>
 
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
 
 
             <table>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td class="card">
+                    <tr class="card">
+                        <td >
+                            <br />
                             @Html.DisplayFor(modelItem => item.Name)
                             <br />
-
+                            <br />
                             @Html.DisplayFor(modelItem => item.Description)
                             <br />
                             @Html.DisplayFor(modelItem => item.Picture)
+                            <br />
+                            <br />
+                            <br />
                             <br />
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                             @Html.ActionLink("Details", "Details", new { id = item.ID }) |
@@ -33,6 +34,12 @@
 
                 }
             </table>
+            <br />
+            <div>
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn" })
             </div>
+        </div>
+        
+
     </section>
 </body>
