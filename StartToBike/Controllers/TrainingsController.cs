@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 using StartToBike.DAL;
 using StartToBike.Models;

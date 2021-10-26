@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using StartToBike.DAL;
 using StartToBike.Models;
 
@@ -15,16 +18,18 @@ namespace StartToBike.Controllers
     public class InjuriesController : Controller
     {
         private StartToBikeContext db = new StartToBikeContext();
-
+        
         // GET: Injuries
         public ActionResult Index()
         {
+            
             return View(db.Injuries.ToList());
         }
 
         // GET: Injuries/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -130,6 +135,46 @@ namespace StartToBike.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Function to add Injury to User Collection
+        [Authorize(Roles = "User")]
+        public ActionResult Save(int? id)
+        {
+            //checks if id was given
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //gets Injury
+            Injury injury = db.Injuries.Find(id);
+            //checks if Injury is valid
+            if (injury == null)
+            {
+                return HttpNotFound();
+            }
+            //get current user
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var user = manager.FindById(User.Identity.GetUserId());
+            //find user in db and set variable to it
+            ApplicationUser UserToAddTo = user;
+            //add injury to injurylist within user
+            if (UserToAddTo == null)
+            {
+                return HttpNotFound();
+            }
+            UserToAddTo.InjuryList.Add(injury);
+            //add user to userlist within injury
+            injury.UserList.Add(UserToAddTo);
+            //confirm changes to user and injury
+            if (ModelState.IsValid)
+            {
+                db.Entry(injury).State = EntityState.Modified;
+                db.Entry(UserToAddTo).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return View("Index", db.Injuries.ToList());
         }
     }
 }

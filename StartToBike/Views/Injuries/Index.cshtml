@@ -7,14 +7,14 @@
     <section class="main" id="main">
         <div class="content">
             <h2>Blessures</h2>
-
+            
 
 
             <table>
                 @foreach (var item in Model)
                 {
                     <tr class="card">
-                        <td >
+                        <td>
                             <br />
                             @Html.DisplayFor(modelItem => item.Name)
                             <br />
@@ -26,18 +26,34 @@
                             <br />
                             <br />
                             <br />
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @if (User.IsInRole("Moderator"))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) @:|
+                            }
+                            @if (User.IsInRole("User"))
+                            {
+                                @Html.ActionLink("Save","Save", new { id = item.ID}) @:|
+                            }
+
+                            @Html.ActionLink("Details", "Details", new { id = item.ID })
+                            @if (User.IsInRole("Moderator"))
+                            {
+                                @:|
                             @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            }
                         </td>
                     </tr>
 
                 }
             </table>
             <br />
-            <div>
-                @Html.ActionLink("Create New", "Create", null, new { @class = "btn" })
-            </div>
+            @if (User.IsInRole("Moderator"))
+            {
+                <div>
+                    @Html.ActionLink("Create New", "Create", null, new { @class = "btn" })
+                </div>
+            }
+
         </div>
         
 
