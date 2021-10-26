@@ -244,7 +244,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-
     <Content Include="Views\Injuries\Create.cshtml" />
     <Content Include="Views\Injuries\Delete.cshtml" />
     <Content Include="Views\Injuries\Details.cshtml" />
@@ -260,9 +259,8 @@
     <Content Include="Views\Trainings\Details.cshtml" />
     <Content Include="Views\Trainings\Edit.cshtml" />
     <Content Include="Views\Trainings\Index.cshtml" />
-
     <Content Include="Views\Home\Home.cshtml" />
-
+    <Content Include="Views\Trainings\Type.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

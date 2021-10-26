@@ -3,72 +3,76 @@
 @{
     ViewBag.Title = "Details";
 }
+<body>
+    <section class="main" id="main">
+        <div class="content">
+            <h2>Details</h2>
 
-<h2>Details</h2>
+            <div>
+                <br />
+                <dl class="dl-horizontal">
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Name):</span>
+                    </dt>
 
-<div>
-    <h4>Training</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <br />
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Description):</span>
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <br />
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Picture):</span>
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Picture)
+                    </dd>
+                    <br />
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Type):</span>
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Type)
+                    </dd>
+                    <br />
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Pros):</span>
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Pros)
+                    </dd>
+                    <br />
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Duration):</span>
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Picture)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Duration)
+                    </dd>
+                    <br />
+                    <dt>
+                        <span>@Html.DisplayNameFor(model => model.Difficulty):</span>
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Difficulty)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pros)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pros)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Difficulty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Difficulty)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </section>
+</body>
