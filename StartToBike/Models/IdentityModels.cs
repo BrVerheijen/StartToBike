@@ -22,6 +22,7 @@ namespace StartToBike.Models
         }
         
         public float BMI { get; set; }
+
         public virtual ICollection<Injury> Injury { get; set; }
 
         public virtual ICollection<Route> Route { get; set; }

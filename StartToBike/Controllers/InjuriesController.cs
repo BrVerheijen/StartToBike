@@ -169,6 +169,7 @@ namespace StartToBike.Controllers
             
             UserToAddTo.Injury.Add(injury);
             //add user to userlist within injury
+            
             injury.ApplicationUser.Add(UserToAddTo);
             //confirm changes to user and injury
             
