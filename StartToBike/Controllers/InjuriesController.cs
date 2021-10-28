@@ -165,8 +165,9 @@ namespace StartToBike.Controllers
                 return HttpNotFound();
             }
 
-            
-            
+
+            //db.User.Include("Injuries").FirstOrDefault(x => x.Id == UserToAddTo.Id).Injury.Add(injury);
+            //db.Injury.Include("AspNetUsers").FirstOrDefault(x => x.ID == injury.ID).ApplicationUser.Add(UserToAddTo);
             UserToAddTo.Injury.Add(injury);
             //add user to userlist within injury
             

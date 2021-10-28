@@ -20,7 +20,12 @@ namespace StartToBike.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Injury).WithMany(i => i.ApplicationUser);
+            modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Injury).WithMany(i => i.ApplicationUser)
+                .Map(m => {
+                    m.ToTable("AspNetUserInjuries");
+                    m.MapLeftKey("AspUserID");
+                    m.MapRightKey("InjuryID");
+                });
            
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
