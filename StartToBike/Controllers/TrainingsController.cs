@@ -20,7 +20,7 @@ namespace StartToBike.Controllers
         // GET: Trainings
         public ActionResult Index()
         {
-            return View(db.Trainings.ToList());
+            return View(db.Training.ToList());
         }
 
         // GET: Trainings/Details/5
@@ -30,7 +30,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Training training = db.Trainings.Find(id);
+            Training training = db.Training.Find(id);
             if (training == null)
             {
                 return HttpNotFound();
@@ -55,7 +55,7 @@ namespace StartToBike.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Trainings.Add(training);
+                db.Training.Add(training);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Training training = db.Trainings.Find(id);
+            Training training = db.Training.Find(id);
             if (training == null)
             {
                 return HttpNotFound();
@@ -104,7 +104,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Training training = db.Trainings.Find(id);
+            Training training = db.Training.Find(id);
             if (training == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace StartToBike.Controllers
         [Authorize(Roles = "Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Training training = db.Trainings.Find(id);
-            db.Trainings.Remove(training);
+            Training training = db.Training.Find(id);
+            db.Training.Remove(training);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -13,19 +13,21 @@ namespace StartToBike.DAL
     {
         public StartToBikeContext() : base("StartToBike") { }
 
-        public DbSet<ApplicationUser> Users { get; set; }
-        public DbSet<Injury> Injuries { get; set; }
-        public DbSet<Route> Routes { get; set; }
-        public DbSet<Training> Trainings { get; set; }
+        public virtual DbSet<ApplicationUser> User { get; set; }
+        public virtual DbSet<Injury> Injury { get; set; }
+        public virtual DbSet<Route> Route { get; set; }
+        public virtual DbSet<Training> Training { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Injury).WithMany(i => i.ApplicationUser);
+           
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
+            base.OnModelCreating(modelBuilder);
+            
 
         }
     }

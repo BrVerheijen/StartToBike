@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 using System.Security.Claims;
@@ -10,15 +11,22 @@ using StartToBike.Models;
 namespace StartToBike.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    [Table("AspNetUsers")]
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser()
+        {
+            Injury = new HashSet<Injury>();
+            Route = new HashSet<Route>();
+            Training = new HashSet<Training>();
+        }
         
         public float BMI { get; set; }
-        public virtual ICollection<Injury> InjuryList { get; set; }
+        public virtual ICollection<Injury> Injury { get; set; }
 
-        public virtual ICollection<Route> RouteList { get; set; }
+        public virtual ICollection<Route> Route { get; set; }
 
-        public virtual ICollection<Training> TrainingList { get; set; }
+        public virtual ICollection<Training> Training { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

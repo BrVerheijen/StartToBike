@@ -23,7 +23,7 @@ namespace StartToBike.Controllers
         public ActionResult Index()
         {
             
-            return View(db.Injuries.ToList());
+            return View(db.Injury.ToList());
         }
 
         // GET: Injuries/Details/5
@@ -34,7 +34,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Injury injury = db.Injuries.Find(id);
+            Injury injury = db.Injury.Find(id);
             if (injury == null)
             {
                 return HttpNotFound();
@@ -59,7 +59,8 @@ namespace StartToBike.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Injuries.Add(injury);
+                
+                db.Injury.Add(injury);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -75,7 +76,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Injury injury = db.Injuries.Find(id);
+            Injury injury = db.Injury.Find(id);
             if (injury == null)
             {
                 return HttpNotFound();
@@ -108,7 +109,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Injury injury = db.Injuries.Find(id);
+            Injury injury = db.Injury.Find(id);
             if (injury == null)
             {
                 return HttpNotFound();
@@ -122,8 +123,8 @@ namespace StartToBike.Controllers
         [Authorize(Roles = "Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Injury injury = db.Injuries.Find(id);
-            db.Injuries.Remove(injury);
+            Injury injury = db.Injury.Find(id);
+            db.Injury.Remove(injury);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -147,7 +148,7 @@ namespace StartToBike.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //gets Injury
-            Injury injury = db.Injuries.Find(id);
+            Injury injury = db.Injury.Find(id);
             //checks if Injury is valid
             if (injury == null)
             {
@@ -163,18 +164,21 @@ namespace StartToBike.Controllers
             {
                 return HttpNotFound();
             }
-            UserToAddTo.InjuryList.Add(injury);
+
+            
+            
+            UserToAddTo.Injury.Add(injury);
             //add user to userlist within injury
-            injury.UserList.Add(UserToAddTo);
+            injury.ApplicationUser.Add(UserToAddTo);
             //confirm changes to user and injury
+            
             if (ModelState.IsValid)
             {
-                db.Entry(injury).State = EntityState.Modified;
-                db.Entry(UserToAddTo).State = EntityState.Modified;
+                
                 db.SaveChanges();
             }
 
-            return View("Index", db.Injuries.ToList());
+            return View("Index", db.Injury.ToList());
         }
     }
 }

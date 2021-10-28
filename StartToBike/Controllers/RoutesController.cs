@@ -20,7 +20,7 @@ namespace StartToBike.Controllers
         // GET: Routes
         public ActionResult Index()
         {
-            return View(db.Routes.ToList());
+            return View(db.Route.ToList());
         }
 
         // GET: Routes/Details/5
@@ -30,7 +30,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Route route = db.Routes.Find(id);
+            Route route = db.Route.Find(id);
             if (route == null)
             {
                 return HttpNotFound();
@@ -55,7 +55,7 @@ namespace StartToBike.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Routes.Add(route);
+                db.Route.Add(route);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Route route = db.Routes.Find(id);
+            Route route = db.Route.Find(id);
             if (route == null)
             {
                 return HttpNotFound();
@@ -104,7 +104,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Route route = db.Routes.Find(id);
+            Route route = db.Route.Find(id);
             if (route == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace StartToBike.Controllers
         [Authorize(Roles = "Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Route route = db.Routes.Find(id);
-            db.Routes.Remove(route);
+            Route route = db.Route.Find(id);
+            db.Route.Remove(route);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
