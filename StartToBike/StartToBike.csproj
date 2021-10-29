@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -260,7 +262,9 @@
     <Content Include="Views\Trainings\Edit.cshtml" />
     <Content Include="Views\Trainings\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
+
     <Content Include="Views\Trainings\Type.cshtml" />
+
     <Content Include="Views\Account\BMI.cshtml" />
   </ItemGroup>
   <ItemGroup>

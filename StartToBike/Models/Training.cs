@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,12 @@ namespace StartToBike.Models
 {
     public class Training
     {
+        public Training()
+        {
+            ApplicationUser = new HashSet<ApplicationUser>();
+        }
 
+        [Key]
         public int ID { get; set; }
 
         public string Name { get; set; }
@@ -23,7 +29,7 @@ namespace StartToBike.Models
 
         public int Difficulty { get; set; }
 
-        public virtual ICollection<ApplicationUser> UserList { get; set; }
+        public virtual ICollection<ApplicationUser> ApplicationUser { get; set; }
 
     }
 }

@@ -11,38 +11,42 @@
             <table>
                 
 
-                @foreach (var item in Model)
-                {
-                    <tr class="card">
-                        <td>
-                            <br />
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Picture)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Length)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Difficulty)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Picture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Difficulty)
+        </td>
+        <td>
+            @if (User.IsInRole("Moderator"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) @:|
+            }
+            @if (User.IsInRole("User"))
+            {
+                @Html.ActionLink("Save", "Save", new { id = item.ID }) @:|
+            }
 
-            </table>
-            <br />
-            <div>
-                @Html.ActionLink("Create New", "Create", null, new { @class = "btn" })
-            </div>
-        </div>
-    </section>
-</body>
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+            @if (User.IsInRole("Moderator"))
+            {
+                @:|
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            }
+        </td>
+    </tr>
+}
+
+</table>
+

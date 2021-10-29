@@ -5,12 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 using StartToBike.DAL;
 using StartToBike.Models;
 
 namespace StartToBike.Controllers
 {
+    [Authorize]
     public class TrainingsController : Controller
     {
         private StartToBikeContext db = new StartToBikeContext();
@@ -18,7 +20,7 @@ namespace StartToBike.Controllers
         // GET: Trainings
         public ActionResult Index()
         {
-            return View(db.Trainings.ToList());
+            return View(db.Training.ToList());
         }
 
         // GET: Trainings/Details/5
@@ -28,7 +30,7 @@ namespace StartToBike.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Training training = db.Trainings.Find(id);
+            Training training = db.Training.Find(id);
             if (training == null)
             {
                 return HttpNotFound();
@@ -37,6 +39,7 @@ namespace StartToBike.Controllers
         }
 
         // GET: Trainings/Create
+        [Authorize(Roles = "Moderator")]
         public ActionResult Create()
         {
             return View();
@@ -47,11 +50,12 @@ namespace StartToBike.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult Create([Bind(Include = "ID,Name,Description,Picture,Type,Pros,Duration,Difficulty")] Training training)
         {
             if (ModelState.IsValid)
             {
-                db.Trainings.Add(training);
+                db.Training.Add(training);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -60,13 +64,14 @@ namespace StartToBike.Controllers
         }
 
         // GET: Trainings/Edit/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Training training = db.Trainings.Find(id);
+            Training training = db.Training.Find(id);
             if (training == null)
             {
                 return HttpNotFound();
@@ -79,6 +84,7 @@ namespace StartToBike.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult Edit([Bind(Include = "ID,Name,Description,Picture,Type,Pros,Duration,Difficulty")] Training training)
         {
             if (ModelState.IsValid)
@@ -91,13 +97,14 @@ namespace StartToBike.Controllers
         }
 
         // GET: Trainings/Delete/5
+        [Authorize(Roles = "Moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Training training = db.Trainings.Find(id);
+            Training training = db.Training.Find(id);
             if (training == null)
             {
                 return HttpNotFound();
@@ -108,10 +115,11 @@ namespace StartToBike.Controllers
         // POST: Trainings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Moderator")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Training training = db.Trainings.Find(id);
-            db.Trainings.Remove(training);
+            Training training = db.Training.Find(id);
+            db.Training.Remove(training);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
