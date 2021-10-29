@@ -132,5 +132,13 @@ namespace StartToBike.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Type()
+        {
+            ViewBag.Message = "Your home page.";
+
+            return View();
+        }
+
     }
 }
