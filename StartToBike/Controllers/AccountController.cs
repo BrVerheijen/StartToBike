@@ -6,16 +6,21 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using StartToBike.DAL;
 using StartToBike.Models;
+using System.Runtime.InteropServices;
 
 namespace StartToBike.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private StartToBikeContext db = new StartToBikeContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -482,6 +487,36 @@ namespace StartToBike.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+
+
+        [Authorize(Roles ="User")]
+        public ActionResult BMI()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "User")]
+        public ActionResult BMI(float Weight, float Height,float Waist=-1 )
+        {
+            //Calculate BMI
+            float HeightMeter = Height * 100;
+            float HeightSquared = HeightMeter * HeightMeter;
+            float BMI = Weight/HeightSquared;
+            //get current user
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var _user = manager.FindById(User.Identity.GetUserId());
+            ApplicationUser user = _user;
+            user.BMI = BMI;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            ViewBag.BMI = BMI;
+            return View();
         }
         #endregion
     }

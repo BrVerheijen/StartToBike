@@ -23,7 +23,7 @@ namespace StartToBike.DAL
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Injury).WithMany(i => i.ApplicationUser)
                 .Map(m => {
                     m.ToTable("AspNetUserInjuries");
-                    m.MapLeftKey("AspUserID");
+                    m.MapLeftKey("AspNetUserID");
                     m.MapRightKey("InjuryID");
                 });
            

@@ -47,9 +47,21 @@
             @Html.DisplayFor(modelItem => item.Difficulty)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @if (User.IsInRole("Moderator"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) @:|
+            }
+            @if (User.IsInRole("User"))
+            {
+                @Html.ActionLink("Save", "Save", new { id = item.ID }) @:|
+            }
+
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+            @if (User.IsInRole("Moderator"))
+            {
+                @:|
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            }
         </td>
     </tr>
 }
