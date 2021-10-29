@@ -261,6 +261,7 @@
     <Content Include="Views\Trainings\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Trainings\Type.cshtml" />
+    <Content Include="Views\Account\BMI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -403,6 +403,14 @@ namespace StartToBike.Controllers
             return View();
         }
 
+        // GET: /Account/BMI
+        public ActionResult BMI()
+        {
+            ViewBag.Message = "Your BMI page.";
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
