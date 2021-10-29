@@ -7,39 +7,43 @@
         <div class="content">
             <h2>Bereken hier uw <span>BMI</span></h2>
             <br />
-            <div class="input-label">
-                Geslacht:
-            </div>
-            <div>
-                <input type="text" placeholder="" name="Sex" required class="input">
-            </div>
-            <br />
-            <div class="input-label">
-                Leeftijd:
-            </div>
-            <div>
-                <input type="text" placeholder="" name="Age" required class="input">
-            </div>
-            <br />
-            <div class="input-label">
-                Gewicht:
-            </div>
-            <div>
-                <input type="text" placeholder="" name="Weight" required class="input">
-            </div>
-            <br />
-            <div class="input-label">
-                Lengte:
-            </div>
-            <div>
-                <input type="text" placeholder="" name="Height" required class="input">
-            </div>
-            <br />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Bereken BMI" class="btn btn-default" />
+            @using (Html.BeginForm("BMI"))
+            {
+                <div class="input-label">
+                    Geslacht:
                 </div>
-            </div>
+                <div>
+                    <input type="text" placeholder="" id="Sex" required class="input">
+                </div>
+                <br />
+                <div class="input-label">
+                    Leeftijd:
+                </div>
+                <div>
+                    <input type="text" placeholder="" id="Age" required class="input">
+                </div>
+                <br />
+                <div class="input-label">
+                    Gewicht:
+                </div>
+                <div>
+                    <input type="text" name="Weight" required class="input">
+                </div>
+                <br />
+                <div class="input-label">
+                    Lengte:
+                </div>
+                <div>
+                    <input type="text" name="Height" required class="input">
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Bereken BMI" class="btn btn-default" />
+                    </div>
+                </div>
+                }
+
         </div>
     </section>
 </body>
