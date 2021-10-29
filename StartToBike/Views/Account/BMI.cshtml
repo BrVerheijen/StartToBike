@@ -7,8 +7,12 @@
     <section class="main" id="main">
         <div class="content">
             <h2>Bereken hier uw <span>BMI</span></h2>
+            @if (ViewBag.BMI != null)
+            {
+                <h2>@ViewBag.BMI</h2>
+            }
             <br />
-            @using (Html.BeginForm("BMI"))
+            @using (Html.BeginForm("BMICalc","Account"))
             {
                 <div class="input-label">
                     Geslacht:

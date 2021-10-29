@@ -411,13 +411,7 @@ namespace StartToBike.Controllers
             return View();
         }
 
-        // GET: /Account/BMI
-        public ActionResult BMI()
-        {
-            ViewBag.Message = "Your BMI page.";
-
-            return View();
-        }
+        
 
         protected override void Dispose(bool disposing)
         {
@@ -503,12 +497,12 @@ namespace StartToBike.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         [Authorize(Roles = "User")]
-        public ActionResult BMI(float Weight, float Height,float Waist=-1 )
+        public ActionResult BMICalc (float Weight, float Height )
         {
             //Calculate BMI
-            float HeightMeter = Height * 100;
+            float HeightMeter = Height/100;
             float HeightSquared = HeightMeter * HeightMeter;
             float BMI = Weight/HeightSquared;
             //get current user
@@ -524,7 +518,7 @@ namespace StartToBike.Controllers
             }
 
             ViewBag.BMI = BMI;
-            return View();
+            return View("BMI");
         }
         #endregion
     }
